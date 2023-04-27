@@ -1,0 +1,41 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    # Configure the type of datasource
+    type: com.zaxxer.hikari.HikariDataSource
+    # Configure connecting to db
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud-user?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+  #application:   #bootstrap.yml中配置过了
+    #name: userservice
+
+  cloud:
+    nacos:
+      #server-addr: localhost:8848  #bootstrap.yml中配置过了
+      discovery:
+        cluster-name: UESTC
+        namespace: 83a150bf-8670-49cc-9aa6-a52b205a9e33
+
+
+mybatis-plus:
+  configuration:
+    #config for mybaits log
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#logging:
+#  level:
+#    cn.edu.uestc: debug
+#  pattern:
+#    dateformat: yyyy-MM-dd HH-mm-ss
+
+
+
+#eureka:
+#  client:
+#    service-url: #introduce dependencies and configured eureka url ===== register server
+#      #Application name has configured, we can use name to replace url and port
+#      defaultZone: http://127.0.0.1:10086/eureka

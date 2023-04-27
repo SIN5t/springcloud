@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: userservice
+    #service name
+  profiles:
+    active: dev # environment 对应着userservice-dev.yaml 这里的profile就是-后面的dev
+  cloud:
+    nacos:
+      server-addr: localhost:8848 # nacos address
+      config:
+        file-extension: yaml # sufix of file     name、profiles、file-extension 共同组成nacos那边的dataId
+

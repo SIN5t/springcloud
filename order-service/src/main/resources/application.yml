@@ -1,0 +1,40 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    # Configure the type of datasource
+    type: com.zaxxer.hikari.HikariDataSource
+    # Configure connecting to db
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud-order?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+  application:
+    name: orderservice
+  cloud:
+    nacos:
+      server-addr: localhost:8848 # nacos server port
+      discovery:
+        cluster-name: UESTC
+        namespace: 83a150bf-8670-49cc-9aa6-a52b205a9e33
+        ephemeral: false #Ephemeral: 短暂的;瞬息的 set as non temple instance
+
+
+mybatis-plus:
+  configuration:
+    #config for mybaits log
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#eureka:
+#  client:
+#    service-url: # configured for more than once
+#      defaultZone: http://127.0.0.1:10086/eureka
+
+#使用的开发环境中(nacos2021)，注册中心使用的是nacos，负载均衡使用的是spring-cloud-loadbalancer，而不是ribbon
+userservice:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule   # 负载均衡规则
+
+#ribbon:
+#    enabled: true # 开启饥饿加载
+#    clients: # 指定饥饿加载的服务名称
+#      - userservice
