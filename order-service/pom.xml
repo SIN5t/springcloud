@@ -90,6 +90,19 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>-->
+        <!--feign的依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--引入feign的统一依赖-->
+        <dependency>
+            <groupId>cn.edu.uestc.springboot</groupId>
+            <artifactId>feign-api</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+
 
     </dependencies>
 

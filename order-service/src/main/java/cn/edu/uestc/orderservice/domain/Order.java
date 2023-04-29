@@ -1,6 +1,6 @@
 package cn.edu.uestc.orderservice.domain;
 
-import cn.edu.uestc.userservice.domain.User;
+import cn.edu.uestc.feignapi.domain.User;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

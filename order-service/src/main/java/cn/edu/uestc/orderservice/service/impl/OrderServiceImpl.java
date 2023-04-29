@@ -1,5 +1,7 @@
 package cn.edu.uestc.orderservice.service.impl;
 
+import cn.edu.uestc.feignapi.clients.UserClient;
+import cn.edu.uestc.feignapi.domain.User;
 import cn.edu.uestc.userservice.mapper.UserMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import cn.edu.uestc.orderservice.domain.Order;
@@ -7,7 +9,7 @@ import cn.edu.uestc.orderservice.service.OrderService;
 import cn.edu.uestc.orderservice.mapper.OrderMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import cn.edu.uestc.userservice.domain.User;
+
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -44,6 +46,21 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
         //3.封装
         order.setUser(user);
 
+        return order;
+    }
+    @Resource
+    private UserClient userClient;
+
+    public Order queryOrderByFeign(Long orderId) {
+        //1、查询订单
+        //Order order = this.getById(orderId);
+        List<Order> orders = orderMapper.queryById(orderId);
+        Order order = orders.get(0);
+        // 2.利用Feign来查询，根据order对应的UserId查询order对应的user
+        User user = userClient.findByFeignId(order.getUserId());
+
+        //3.封装
+        order.setUser(user);
         return order;
     }
 }

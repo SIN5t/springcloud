@@ -27,4 +27,12 @@ public class OrderController {
         Order order = orderService.queryOrderByRestTemplate(orderId);
         return order;
     }
+
+    @GetMapping("/feign/{orderId}")
+    @ResponseBody
+    public Order queryOrderByFeign(@PathVariable("orderId") Long orderId){
+        Order order = orderService.queryOrderByFeign(orderId);
+        return order;
+    }
+
 }

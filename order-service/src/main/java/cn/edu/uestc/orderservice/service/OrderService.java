@@ -10,5 +10,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface OrderService extends IService<Order> {
     Order queryOrderByRestTemplate(Long orderId);
+    Order queryOrderByFeign(Long orderId);
 
 }
