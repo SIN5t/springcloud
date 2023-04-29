@@ -30,7 +30,7 @@ public class OrderController {
 
     @GetMapping("/feign/{orderId}")
     @ResponseBody
-    public Order queryOrderByFeign(@PathVariable("orderId") Long orderId){
+    public Order queryOrderByFeignController(@PathVariable("orderId") Long orderId){
         Order order = orderService.queryOrderByFeign(orderId);
         return order;
     }

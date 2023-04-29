@@ -2,7 +2,6 @@ package cn.edu.uestc.orderservice.service.impl;
 
 import cn.edu.uestc.feignapi.clients.UserClient;
 import cn.edu.uestc.feignapi.domain.User;
-import cn.edu.uestc.userservice.mapper.UserMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import cn.edu.uestc.orderservice.domain.Order;
 import cn.edu.uestc.orderservice.service.OrderService;

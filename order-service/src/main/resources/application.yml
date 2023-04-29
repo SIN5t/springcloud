@@ -38,3 +38,15 @@ userservice:
 #    enabled: true # 开启饥饿加载
 #    clients: # 指定饥饿加载的服务名称
 #      - userservice
+
+# can also use a config class to replace the following config
+#feign:
+#  client:
+#    config:
+#      userservice:
+#        logger-level: full
+feign:
+  httpclient:
+    enabled: true #支持httpclient的优化
+    connection-timeout: 200
+    max-connections-per-route: 50
