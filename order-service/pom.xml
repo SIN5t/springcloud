@@ -97,7 +97,7 @@
         </dependency>
         <!--引入feign的统一依赖-->
         <dependency>
-            <groupId>cn.edu.uestc.springboot</groupId>
+            <groupId>cn.edu.uestc</groupId>
             <artifactId>feign-api</artifactId>
             <version>1.0</version>
             <scope>compile</scope>

@@ -2,10 +2,13 @@ package cn.edu.uestc.orderservice.controller;
 
 import cn.edu.uestc.orderservice.domain.Order;
 import cn.edu.uestc.orderservice.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
+@Slf4j
 @RestController
 @RequestMapping("order")
 public class OrderController {
@@ -30,8 +33,10 @@ public class OrderController {
 
     @GetMapping("/feign/{orderId}")
     @ResponseBody
-    public Order queryOrderByFeignController(@PathVariable("orderId") Long orderId){
+    public Order queryOrderByFeignController(@PathVariable("orderId") Long orderId,
+                                             @RequestHeader(value ="Msg",required = false) String msg){
         Order order = orderService.queryOrderByFeign(orderId);
+        log.info("msg = {}",msg);
         return order;
     }
 
